@@ -6,8 +6,20 @@ const createEsbuildPlugin =
   require("@badeball/cypress-cucumber-preprocessor/esbuild").createEsbuildPlugin;
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    charts: true,
+    reportDir: 'cypress/reports',
+    reportPageTitle: 'QA_AI_Machina_Report',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+    overwrite: true,
+  },
   e2e: {
     async setupNodeEvents(on, config) {
+      screenshotOnRunFailure = true;
+      require('cypress-mochawesome-reporter/plugin')(on);
       const bundler = createBundler({
         plugins: [createEsbuildPlugin(config)],
       });
