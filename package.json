@@ -4,7 +4,7 @@
   "description": "Reference from SC",
   "main": "index.js",
   "scripts": {
-    "cypress:chrome": "cypress run --browser chrome --headed",
+    "cypress:chrome": "cypress run --browser chrome",
     "cypress:edge": "cypress run --browser chrome",
     "cypress:api": "cypress run --spec"
   },
